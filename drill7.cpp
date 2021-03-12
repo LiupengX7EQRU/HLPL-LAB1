@@ -9,9 +9,9 @@ struct Token {
 	Token(char ch, string n) :kind(ch), name(n) { } 
 	};
 	
-	// Stream of tokens
 	
-	class Token_stream {
+	
+        class Token_stream {
 	bool full;
 	Token buffer; 
 	public:
@@ -173,7 +173,7 @@ struct Token {
 	}
 	}
 	
-	double term() // Performs '*', '/', '!', '%' and @(sqrt) operations
+	double term() 
 	{
 	double left = primary(); 
 	while(true) {
@@ -240,8 +240,7 @@ struct Token {
 	string name = t.name; 
 	if (is_declared(name)) error(name, " declared twice"); 
 	Token t2 = ts.get(); 
-	if (t2.kind != '=') error("= missing in declaration of " ,name); /* If there is no '=' symbol used to assign a value
-	to the variable return an error */
+	if (t2.kind != '=') error("= missing in declaration of " ,name); 
 	double d = expression(); 
 	names.push_back(Variable(name,d)); 
 	return d; 
