@@ -41,7 +41,7 @@ Token Token_stream::get(){
     char ch;
     cin >> ch;    
     switch (ch) {
-    case '=':    
+    case '；':    
     case 'x':    
     case 'X':    
     case '(': case ')': case '+': case '-': case '*': case '/': case '%':
@@ -149,7 +149,7 @@ try
 {
     cout << "Welcome to our simple calculator."<<endl;
     cout << "You can enter expressions using floating point numbers."<<endl;
-    cout << "operators are: '+','-','*','/', and '%'. Enter X to quit." << endl;
+    cout << "operators that you can use are: '+','-','*','/', and '%'. Enter X to quit." << endl;
     cout << "Enter ';' when you want to solve your input." << endl;
     double val;
     while (cin) {
