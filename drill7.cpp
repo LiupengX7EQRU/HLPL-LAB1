@@ -129,18 +129,18 @@ double expression();
 
 double primary()
 {
-	Token t = ts.get(); // Get a character
+	Token t = ts.get(); 
 	switch (t.kind) {
 	case '(': 
-	{	double d = expression(); // Perform calculations in semicolons
-		t = ts.get(); // Get a ')' closing character
-		if (t.kind != ')') error("')' expected"); // If there wasn't any ')' return an error
+	{	double d = expression();
+		t = ts.get(); 
+		if (t.kind != ')') error("')' expected"); 
 		return d;
 	}
-	case sqrts: // Calculate square root of number or group of numbers
+	case sqrts: 
 	{
 		double d = primary();
-		if (d < 0) error("square root of negative number was detected"); // Print error message if negative number was thrown to sqrt
+		if (d < 0) error("square root of negative number was detected"); 
 		return sqrt(d);
 	}
 	case pows:
@@ -157,42 +157,42 @@ double primary()
 				result*=lval;
 			}
 			t = ts.get();
-			if (t.kind != ')') error("')' expected"); // If there wasn't any ')' return an error
+			if (t.kind != ')') error("')' expected"); 
 			return result;
 		}
-		else error("'(' expected"); // If there wasn't any ')' return an error
+		else error("'(' expected"); 
 	}
-	case '-': // For negative digits
-		return - primary(); // Return negative digit
-	case number: // If Token is a number
-		return t.value; // Return the number
-	case name: // If Token is a name of variable
-		return get_value(t.name); // Return the value of the variable
+	case '-': 
+		return - primary();
+	case number: 
+		return t.value; 
+	case name: 
+		return get_value(t.name); 
 	default:
-		error("primary expected"); // Return an error if an inappropriate character was provided
+		error("primary expected");
 	}
 }
 
 
 double term()
 {
-	double left = primary(); // Get the number or the variable
+	double left = primary(); 
 	while(true) {
-		Token t = ts.get(); // Get a new character
+		Token t = ts.get(); 
 		switch(t.kind) {
 		case '*': // Multiplication
 			left *= primary(); 
 			break;
 		case '/': // Division
 		{	double d = primary(); 
-			if (d == 0) error("division by zero"); // Division by zero is prohibited
+			if (d == 0) error("division by zero"); 
 			left /= d;
 			break;
 		}
         case '!': // Factorial
             {   
                 int x = left;
-                for (int i = 1; i < left; i++) { // Get a multiplication of all numbers before x (including x)
+                for (int i = 1; i < left; i++) { 
                     x*=i;
                 }
                 if (x == 0) left = 1;
@@ -203,13 +203,13 @@ double term()
             {
                 double d = primary();
                 if(d == 0) error("division by zero");
-                left = fmod(left,d); // Use fmod to divide floating-point numbers with remainder
+                left = fmod(left,d);
                 break;
             }
 		default:
-			ts.unget(t); // If nothing was done return character to the stream
-			if (left == -0) return 0; // Change -0 to 0 when it was multiplied or divided by negative digit
-			return left; // Return new or unchanged value of 'left'
+			ts.unget(t);
+			if (left == -0) return 0; 
+			return left;
 		}
 
 	}
@@ -284,18 +284,18 @@ void calculate()
 
 int main()
 	try {
-		names.push_back(Variable("k",1000)); // Pre-defined variable 'k'
+		names.push_back(Variable("k",1000)); 
 
-		calculate(); // Performs calculations
+		calculate(); 
 		return 0;
 	}
-	catch (exception& e) { // Throws an exception
-		cerr << "exception: " << e.what() << endl; // Describe the error
+	catch (exception& e) { 
+		cerr << "exception: " << e.what() << endl; 
 		char c;
 		while (cin >>c&& c!=';');
 		return 1;
 	}
-	catch (...) { // Throws an exception
+	catch (...) { 
 		cerr << "exception\n";
 		char c;
 		while (cin>>c && c!=';');
