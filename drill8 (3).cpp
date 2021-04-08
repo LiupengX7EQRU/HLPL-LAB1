@@ -42,4 +42,6 @@ int main()
     }
     print();            // print Y's var
     X::print();         // print X's var
+    
+    return 0;
 }
