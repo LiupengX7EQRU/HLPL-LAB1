@@ -33,13 +33,14 @@ ostream& operator<<(ostream& os, const Date& d)
 
 int main()
 {
-    Date today;
-    init_day(today, 1978, 6, 25);
-    Date tomorrow = today;
+    Date today( 1978, 6, 25 );
+	Date tomorrow( today );
     add_day(tomorrow, 1);
     cout << today << '\n'
          << tomorrow << '\n';
     //Date bad_day(2004, 13, -5);
+    
+    return 0;
 }
 
 
