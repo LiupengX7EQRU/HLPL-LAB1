@@ -34,7 +34,7 @@ ostream& operator<<(ostream& os, const Date& d)
 int main()
 {
     Date today( 1978, 6, 25 );
-	Date tomorrow( today );
+    Date tomorrow( today );
     add_day(tomorrow, 1);
     cout << today << '\n'
          << tomorrow << '\n';
