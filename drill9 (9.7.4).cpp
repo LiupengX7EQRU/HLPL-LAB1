@@ -48,7 +48,7 @@ void Date::add_day(int n)
 		else
 			m = Month(nextM);
 	}
-	}
+	
 }
 
 void Date::add_month(int n)
