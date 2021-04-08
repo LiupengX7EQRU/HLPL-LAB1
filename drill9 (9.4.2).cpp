@@ -9,18 +9,17 @@ struct Date
 };
 
 
-void init_day(Date& dd, int y, int m, int d)
+Date::Date(int yy, int mm, int dd)
+    :y{yy}, m{mm}, d{dd}
 {
    
     if (m < 1 || m > 12) error("impossible month");
     if (d < 1 || d > 31) error("impossible day");
     
-    dd.y = y;
-    dd.m = m;
-    dd.d = d;
+
 }
 
-void add_day(Date& dd, int n)
+void Date::add_day(int n)
 {
 	
 	if (d += n > 31)
