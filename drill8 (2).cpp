@@ -51,4 +51,6 @@ int main()
          << "cy: " << cy << '\n'
          << "dx: " << dx << '\n'
          << "dy: " << dy << '\n';
+    
+    return 0;
 }
