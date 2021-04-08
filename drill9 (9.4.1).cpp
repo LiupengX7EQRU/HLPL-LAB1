@@ -10,7 +10,7 @@ struct Date
 
 void init_day(Date& dd, int y, int m, int d)
 {
-    if (y <1900 || y > 3000) error ("invalid year")
+   
     if (m < 1 || m > 12) error("impossible month");
     if (d < 1 || d > 31) error("impossible day");
     
