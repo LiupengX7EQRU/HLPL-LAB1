@@ -44,7 +44,7 @@ ostream& operator<<(ostream& os, const Date& d)
 int main()
 {
 
-    Date today( 1978, 6, 31 );
+    Date today( 1978, Month::dec, 31 );
     Date tomorrow( today );
     tomorrow.add_day(1);
     cout << today << '\n'
