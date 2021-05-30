@@ -2,27 +2,30 @@
 
 struct Date
 {
-    int y;  //year
-    int m;  //month
-    int d;  //day
+	Date(int y, int m, int d);
+
+	int y;
+	int m;
+	int d;
 };
 
-
-void init_day(Date& dd, int y, int m, int d)
+Date::Date(int yy, int mm, int dd)
 {
-   
-    if (m < 1 || m > 12) error("impossible month");
-    if (d < 1 || d > 31) error("impossible day");
-    
-    dd.y = y;
-    dd.m = m;
-    dd.d = d;
+    if (yy <1900 || yy > 3000) error ("invalid year");
+    if (mm < 1 || mm > 12) error("impossible month");
+    if (dd < 1 || dd > 31) error("impossible day");
+	else
+	{
+		y = yy; m = mm; d = dd;
+	}
+		
 }
+
 
 void add_day(Date& dd, int n)
 {
     dd.d += n;
-    if (dd.d > 31) dd.d %= 31;
+    
 }
 ostream& operator<<(ostream& os, const Date& d)
 {
